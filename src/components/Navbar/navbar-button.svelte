@@ -3,11 +3,6 @@
     export let url;
     export let icon;
     export let message;
-    import { path } from '../../stores';
-
-    const updatePath = (newPath) => {
-		path.update(path => path = newPath);
-	}
 </script>
 
 <style>
@@ -41,7 +36,7 @@
     }
 </style>
 
-<a href="{url}" on:click={updatePath(url)} use:link>
+<a href="{url}" use:link>
     {icon}
     <span>{message}</span>
 </a>

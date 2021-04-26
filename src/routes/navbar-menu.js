@@ -2,17 +2,26 @@ export const NavBarMenu = [
 	{
 		icon: '🏠',
 		url: '/home',
-		message: 'Home'
+		message: 'Home',
+		permissions: [
+			'user'
+		]
 	},
 	{
 		icon: '📣',
 		url: '/about',
-		message: 'About us'
+		message: 'About us',
+		permissions: [
+			'user'
+		]
 	},
 	{
-		icon: '🔥',
+		icon: '🔑',
 		url: '/profile',
-		message: 'Profile'
+		message: 'Profile',
+		permissions: [
+			'user'
+		]
 	}
 ];
 

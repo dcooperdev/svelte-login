@@ -1,22 +1,30 @@
 <script>
-  import { useNavigate, useLocation } from "svelte-navigator";
+  import { useNavigate } from "svelte-navigator";
+  import { auth } from '../firebase';
   import { user } from "../stores";
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   let username;
   let password;
 
-  function handleSubmit() {
-    $user = { username, password };
-    const from = ($location.state && $location.state.from) || "/home";
-    navigate(from, { replace: true });
+  const handleSubmit = () => {
+    auth.signInWithEmailAndPassword(username, password)
+      .then((userCredential) => {
+          console.log({ userCredential });
+          $user = { username, password };
+          navigate("/home", { replace: true });
+      })
+      .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log({ error });
+      });
   }
 </script>
 
 <h3>Login</h3>
-<form on:submit={handleSubmit}>
+<form on:submit|preventDefault={handleSubmit}>
   <input
     bind:value={username}
     type="text"

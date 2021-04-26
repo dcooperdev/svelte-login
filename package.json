@@ -19,6 +19,7 @@
     "svelte-navigator": "latest"
   },
   "dependencies": {
+    "firebase": "^8.4.2",
     "sirv-cli": "^1.0.0"
   }
 }
